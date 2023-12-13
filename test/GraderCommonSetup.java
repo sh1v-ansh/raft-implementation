@@ -130,7 +130,8 @@ public static void setup(boolean gpMode) throws IOException,
 	replicatedServers = new SingleServer[nodeConfigServer.getNodeIDs().size()];
 
 	// create keyspaces if not exists
-	session.execute("create keyspace if not exists " + DEFAULT_KEYSPACE + " " + "with " + "replication={'class':'SimpleStrategy', " + "'replication_factor' : '1'};");
+	session.execute("create keyspace if not exists " + DEFAULT_KEYSPACE + " " + "with " +
+			"replication={'class':'SimpleStrategy', 'replication_factor' : '1'};");
 	// create per-server keyspace and table if not exists
 	for (String node : nodeConfigServer.getNodeIDs()) {
 		session.execute("create keyspace if not exists " + node + " with " +

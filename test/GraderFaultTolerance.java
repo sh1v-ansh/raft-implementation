@@ -256,7 +256,7 @@ public void test34_SingleServerCrash() throws IOException,
 				getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
 		Thread.sleep(SLEEP);
 	} while (serverMap.size() > crashed.size() * 2 //majority
-			&& verifyInserted(key, server) && ++count<10);
+			&& verifyInserted(key, server) && ++count<15);
 
 	Assert.assertTrue("Unable to create record with a single crashed server",
 			count<15);
@@ -294,6 +294,7 @@ public void test35_TwoServerCrash() throws IOException, InterruptedException {
 	Assert.assertTrue(!server.equals(crashed.iterator().next()));
 	System.out.println("Sending request to " + server + "; " + "crashed=" + crashed);
 
+	// while loop below won't actually be repeated because of lack of majority
 	do {
 		client.send(serverMap.get(server),
 				getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
@@ -328,14 +329,17 @@ public void test36_OneServerRecoveryMultipleRequests() throws IOException,
 
 	int key = ThreadLocalRandom.current().nextInt();
 
+	int count=0;
 	String server;
 	// No need to wait or sleep here as a recovering server shouldn't be
 	// a reason for a request to be lost.
-	client.send(serverMap.get(server=
-			(String) Util.getRandomOtherThan(serverMap.keySet(), crashed)), getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
-	Assert.assertTrue("key " + key + " not inserted at entry server " + server,
-			verifyInserted(key, server));
-	Thread.sleep(SLEEP);
+	do {
+		client.send(serverMap.get(server = (String) Util.getRandomOtherThan(serverMap.keySet(), crashed)), getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
+		Thread.sleep(SLEEP);
+	} while (serverMap.size() > crashed.size() * 2 //majority
+			&& verifyInserted(key, server) && ++count<15);
+
+	Assert.assertTrue("key " + key + " not inserted at entry server " + server, verifyInserted(key, server));
 
 	String cmd = null;
 	for (int i = 0; i < servers.length * 3; i++) {
@@ -367,8 +371,14 @@ public void test37_TwoServerRecoveryMultipleRequests() throws IOException,
 	crashed.remove(first);
 
 	int key = (fixedKeyKnownToExist = ThreadLocalRandom.current().nextInt());
-	client.send(serverMap.get((String) Util.getRandomOtherThan(serverMap.keySet(), crashed)), getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
+	String server;
+	int count=0;
+	do {
+	client.send(serverMap.get(server =
+			(String) Util.getRandomOtherThan(serverMap.keySet(), crashed)), getCommand(insertRecordIntoTableCmd(key, DEFAULT_TABLE_NAME)));
 	Thread.sleep(SLEEP);
+	} while (serverMap.size() > crashed.size() * 2 //majority
+			&& verifyInserted(key, server) && ++count<15);
 
 	for (int i = 0; i < servers.length * 3; i++) {
 		client.send(serverMap.get((String) Util.getRandomOtherThan(serverMap.keySet(), crashed)), getCommand(updateRecordOfTableCmd(key, DEFAULT_TABLE_NAME)));
