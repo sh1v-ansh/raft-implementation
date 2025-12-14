@@ -4,8 +4,17 @@ import edu.umass.cs.nio.interfaces.NodeConfig;
 import edu.umass.cs.nio.nioutils.NIOHeader;
 import edu.umass.cs.nio.nioutils.NodeConfigUtils;
 import edu.umass.cs.utils.Util;
-
 import server.ReplicatedServer;
+
+import org.apache.ratis.client.RaftClient;
+import org.apache.ratis.protocol.Message;
+import org.apache.ratis.server.RaftServer;
+import org.apache.ratis.protocol.RaftGroup;
+import org.apache.ratis.statemachine.TransactionContext;
+import org.apache.ratis.statemachine.impl.BaseStateMachine;
+
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Session;
 
 import java.io.Closeable;
 import java.io.File;
@@ -13,146 +22,94 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Collections;
 import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import edu.umass.cs.nio.interfaces.NodeConfig;
-import edu.umass.cs.nio.nioutils.NIOHeader;
-import edu.umass.cs.nio.nioutils.NodeConfigUtils;
-import edu.umass.cs.utils.Util;
-import server.ReplicatedServer;
-import server.SingleServer;
-
-import org.apache.ratis.conf.RaftProperties;
-import org.apache.ratis.grpc.GrpcConfigKeys;
-import org.apache.ratis.protocol.*;
-import org.apache.ratis.proto.RaftProtos;
-import org.apache.ratis.server.RaftServer;
-import org.apache.ratis.server.RaftServerConfigKeys;
-import org.apache.ratis.server.storage.RaftStorage;
-import org.apache.ratis.statemachine.TransactionContext;
-import org.apache.ratis.statemachine.impl.BaseStateMachine;
-import org.apache.ratis.statemachine.impl.SingleFileSnapshotInfo;
-import org.apache.ratis.statemachine.StateMachineStorage;
-import org.apache.ratis.statemachine.SnapshotRetentionPolicy;
-import org.apache.ratis.thirdparty.com.google.protobuf.ByteString;
-import org.apache.ratis.client.RaftClient;
-
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
-
-import java.io.*;
-import java.net.InetSocketAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.UUID;
 
 /**
  * Fault-tolerant replicated DB server using Apache Ratis (Raft).
  *
- * Template only: method signatures + state-management scaffolding.
- * DO NOT add coordination anywhere else; keep all FT state management here.
- *
- * Intended architecture (high-level):
- * - Clients send requests to any replica
- * - Replica submits request to Raft log
- * - On commit, the state machine applies request in log order
- * - Checkpoint/snapshot bounds retained log size
- * - Recovery restores snapshot + replays committed log entries
+ * You write code in exactly two main places:
+ * 1) handleMessageFromClient: receive client request and propose to Raft
+ * 2) MyStateMachine.applyTransaction: apply committed log entries in order (and
+ * reply)
  */
 public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implements Closeable {
 
-    private final class MyStateMachine extends BaseStateMachine {
-
-        @Override
-        public CompletableFuture<Message> applyTransaction(TransactionContext trx) {
-            // Ratis calls this when a log entry is committed.
-            // You extract logIndex + commandBytes here,
-            // then apply to Cassandra and maybe reply to client.
-
-            // long logIndex = trx.getLogEntry().getIndex();
-            // byte[] commandBytes =
-            // trx.getStateMachineLogEntry().getLogData().toByteArray();
-
-            // byte[] response = applyCommittedEntry(logIndex, commandBytes);
-            // replyToClientAfterCommit(/*requestId*/, response);
-
-            return CompletableFuture.completedFuture(Message.EMPTY);
-        }
-
-        @Override
-        public long takeSnapshot() throws IOException {
-            // optional: if you implement snapshots
-            return getLastAppliedTermIndex().getIndex();
-        }
-    }
-
     public static final int MAX_LOG_SIZE = 400;
-
-    /** Ratis storage dir base (you can choose a better location). */
     private static final String RATIS_STORAGE_DIR = "ratis_storage";
 
     private final NodeConfig<String> nodeConfig;
     private final String myID;
     private final InetSocketAddress isaDB;
 
-    // TODO: replace Object with actual Ratis types:
-    private org.apache.ratis.server.RaftServer raftServer;
-    private org.apache.ratis.client.RaftClient raftClient;
-    private org.apache.ratis.protocol.RaftGroup raftGroup;
+    private RaftServer raftServer;
+    private RaftClient raftClient;
+    private RaftGroup raftGroup;
 
-    /*
-     * ******************************
-     * Replication / ordering state
-     ******************************/
-
-    /** Monotonically increasing "last applied" (e.g., Raft log index). */
+    /** Tracks last applied Raft log index (monotonic). */
     private final AtomicLong lastAppliedIndex = new AtomicLong(0L);
 
     /**
-     * Pending client requests waiting for commit.
-     * Key could be requestId / logIndex / clientProvidedId depending on design.
+     * Map from requestId -> client socket address.
+     * Only the replica that received the client request will have the requestId
+     * here,
+     * so only that replica will reply when the entry commits.
      */
     private final ConcurrentHashMap<String, InetSocketAddress> pendingRequests = new ConcurrentHashMap<>();
 
     /**
-     * Track executed indices / ids if needed to prevent duplicates after retries.
-     * (You can tune memory usage to respect MAX_LOG_SIZE constraint.)
+     * Optional dedupe window (if your clients retry and you need exactly-once
+     * behavior).
      */
     private final Set<Long> executedMarkers = Collections.newSetFromMap(new ConcurrentHashMap<Long, Boolean>());
 
-    /*
-     * ******************************
-     * Snapshot / checkpoint state
-     ******************************/
-
-    /** Directory for snapshots/checkpoints for this replica. */
     private final File snapshotDir;
 
     protected final Session session;
     protected final Cluster cluster;
+
+    /** The Ratis state machine instance that Raft calls on commit. */
     private final MyStateMachine stateMachine;
 
     /**
-     * @param nodeConfig Server name/address configuration information read from
-     *                   conf/servers.properties.
-     * @param myID       The name of the keyspace to connect to, also the server id.
-     * @param isaDB      The socket address of the backend datastore (Cassandra)
-     *                   instance.
+     * Ratis StateMachine implementation kept in the same file (inner class).
+     * Ratis calls applyTransaction(...) for committed entries, in log order.
      */
+    private final class MyStateMachine extends BaseStateMachine {
+
+        @Override
+        public CompletableFuture<Message> applyTransaction(TransactionContext trx) {
+            // TODO (READ FROM RATIS):
+            // - Extract log index from trx
+            // - Extract command bytes from trx (the replicated request payload)
+
+            // TODO (APPLY TO YOUR DB STATE):
+            // - Apply command to Cassandra in this method (this is the "state machine")
+            // - Update lastAppliedIndex
+            // - Optionally update executedMarkers for dedupe (if you use it)
+
+            // TODO (REPLY TO CLIENT IF THIS NODE ORIGINATED THE REQUEST):
+            // - Parse requestId from command bytes (your serialized format must include it)
+            // - InetSocketAddress client = pendingRequests.remove(requestId);
+            // - If client != null, send response bytes back over your NIO messenger
+
+            // TODO (OPTIONAL SNAPSHOT POLICY):
+            // - If you do snapshots: check if you should snapshot, then trigger snapshot
+            // logic
+
+            return CompletableFuture.completedFuture(Message.EMPTY);
+        }
+
+        @Override
+        public long takeSnapshot() throws IOException {
+            // TODO (ONLY IF YOU IMPLEMENT SNAPSHOTS):
+            // - Persist a snapshot to snapshotDir
+            // - Return the snapshot index (typically last applied index)
+            return getLastAppliedTermIndex().getIndex();
+        }
+    }
+
     public MyDBFaultTolerantServerZK(NodeConfig<String> nodeConfig, String myID, InetSocketAddress isaDB)
             throws IOException {
         super(new InetSocketAddress(nodeConfig.getNodeAddress(myID),
@@ -163,135 +120,73 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
         this.nodeConfig = nodeConfig;
         this.myID = myID;
         this.isaDB = isaDB;
-        stateMachine = new MyStateMachine(); // This goes inside the raft builder as a property, so the raft has our
-                                             // statemachine
+
+        this.stateMachine = new MyStateMachine();
 
         this.cluster = Cluster.builder().addContactPoint(isaDB.getHostString()).build();
         this.session = cluster.connect(myID);
 
         this.snapshotDir = new File(RATIS_STORAGE_DIR + File.separator + myID);
 
-        // Template lifecycle steps:
-        // 1) build raft group + config
-        // 2) start raft server
-        // 3) recover from snapshot/log if needed
-        // 4) begin serving clients
+        // TODO (RATIS BOOTSTRAP):
+        // - Build raftGroup from nodeConfig (all replica ids + their raft
+        // addresses/ports)
+        // - Build raftClient for proposing entries
+        // - Build and start raftServer with .setStateMachine(stateMachine)
 
-        // TODO: build raftGroup, properties, storage dirs, state machine, etc.
-        // raftGroup = buildRaftGroup();
-        // raftClient = buildRaftClient();
-
-        // TODO: construct and start raftServer using raftGroup + storage + stateMachine
-        // raftServer = ...
-
-        // TODO: build RaftGroup from nodeConfig (ids + addresses)
-
-        // TODO: create RaftClient pointed at raftGroup
-
+        // TODO (RECOVERY):
+        // - If you use snapshots, ensure state machine restore happens correctly
+        // - If you keep your own snapshot files, load them / ensure Ratis sees them
         recoverFromCrash();
     }
 
     @Override
     protected void handleMessageFromClient(byte[] bytes, NIOHeader header) {
-        // TODO: parse request bytes, create requestId, enqueue pending, submit to Raft.
-
-        // Submit to raft need: (byte[] requestBytes, InetSocketAddress clientAddr)
-        // TODO: send requestBytes via raftClient, capture returned log index /
-        // requestId
-        // TODO: map requestId -> clientAddr in pendingRequests
+        // TODO (CLIENT RECEIVE PATH):
+        // - Parse or generate a requestId
+        // - Store pendingRequests.put(requestId, header.sndr)
+        // - Ensure the command you send to Raft includes requestId (so applyTransaction
+        // can find it)
+        // - Propose to Raft via raftClient (leader will replicate/order it)
     }
 
-    /*
-     * =========================================================
-     * Raft submission + commit callbacks
-     * =========================================================
-     */
-
-    /**
-     * Apply a committed log entry to the DB state machine.
-     * In Ratis, this is typically inside a StateMachine.applyTransaction(...).
-     *
-     * @param logIndex     the committed log index
-     * @param commandBytes the replicated command
-     * @return application response bytes to send back (or store for read-only
-     *         clients)
-     */
-    private byte[] applyCommittedEntry(long logIndex, byte[] commandBytes) {
-        // TODO: execute request on Cassandra (same logic as consistency server)
-        // TODO: update lastAppliedIndex, executedMarkers
-        // TODO: trigger checkpointing policy
-        return null;
-    }
-
-    /**
-     * Called when a client-visible response can be returned after commit+apply.
-     *
-     * @param requestId     your chosen request identifier
-     * @param responseBytes bytes to send back to the client
-     */
-    private void replyToClientAfterCommit(String requestId, byte[] responseBytes) {
-        // TODO: find client in pendingRequests and send response over NIO messenger
-        // TODO: remove pending entry
-    }
-
-    /*
-     * =========================================================
-     * Crash recovery
-     * =========================================================
-     */
-
-    /**
-     * Recover application state after crash/restart.
-     * Typically:
-     * 1) load latest snapshot/checkpoint
-     * 2) replay committed log entries after snapshot index
-     */
     private void recoverFromCrash() {
-        // TODO: load snapshot from snapshotDir, restore lastAppliedIndex and DB state
-        // TODO: ask Raft for committed entries after snapshot index and
-        // applyCommittedEntry(...)
+        // TODO (ONLY IF YOU MANAGE SNAPSHOT/STATE OUTSIDE RATIS):
+        // - Load latest snapshot/checkpoint into Cassandra and set lastAppliedIndex
+        // - Otherwise, rely on Ratis StateMachine restore/snapshot mechanism
     }
 
-    // Checkpointing / snapshotting
-
-    /**
-     * Decide if we should checkpoint/snapshot now (e.g., after every K commits).
-     */
     private boolean shouldCheckpoint(long lastApplied) {
-        // TODO: implement a policy that respects MAX_LOG_SIZE
+        // TODO (OPTIONAL POLICY):
+        // - return true when you want to snapshot (e.g., every K commits or when log is
+        // large)
         return false;
     }
 
-    /**
-     * Create a durable checkpoint/snapshot of application state.
-     *
-     * In Ratis, this generally maps to StateMachine.takeSnapshot().
-     *
-     * @param lastIncludedIndex snapshot index
-     */
     private void checkpoint(long lastIncludedIndex) {
-        // TODO: persist snapshot + metadata (lastIncludedIndex, any request dedupe
-        // window)
-        // TODO: ask Raft to trim logs if applicable
+        // TODO (OPTIONAL SNAPSHOT IMPLEMENTATION):
+        // - Persist durable snapshot and metadata
+        // - Coordinate with Ratis snapshot/takeSnapshot if needed
     }
 
     @Override
     public void close() {
-        // TODO: shutdown raftClient, raftServer, any executors, then close superclass
-        // messenger
+        // TODO:
+        // - Stop raftClient and raftServer if started
+        // - Close Cassandra session/cluster if you want clean shutdown
         super.close();
     }
 
     public static void main(String[] args) throws IOException {
-
         NodeConfig<String> nc = NodeConfigUtils.getNodeConfigFromFile(
                 args[0],
                 ReplicatedServer.SERVER_PREFIX,
                 ReplicatedServer.SERVER_PORT_OFFSET);
 
-        new MyDBFaultTolerantServerZK(nc, args[1], args.length > 2 ? Util.getInetSocketAddressFromString(args[2])
-                : new InetSocketAddress("localhost", 9042));
-
+        new MyDBFaultTolerantServerZK(
+                nc,
+                args[1],
+                args.length > 2 ? Util.getInetSocketAddressFromString(args[2])
+                        : new InetSocketAddress("localhost", 9042));
     }
-
 }
