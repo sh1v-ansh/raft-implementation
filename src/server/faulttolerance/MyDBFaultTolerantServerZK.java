@@ -103,7 +103,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
 
         @Override
         public long takeSnapshot() throws IOException {
-            // TODO (ONLY IF YOU IMPLEMENT SNAPSHOTS):
+            // TODO
             // - Persist a snapshot to snapshotDir
             // - Return the snapshot index (typically last applied index)
             return getLastAppliedTermIndex().getIndex();
@@ -154,19 +154,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
         // TODO (ONLY IF YOU MANAGE SNAPSHOT/STATE OUTSIDE RATIS):
         // - Load latest snapshot/checkpoint into Cassandra and set lastAppliedIndex
         // - Otherwise, rely on Ratis StateMachine restore/snapshot mechanism
-    }
-
-    private boolean shouldCheckpoint(long lastApplied) {
-        // TODO (OPTIONAL POLICY):
-        // - return true when you want to snapshot (e.g., every K commits or when log is
-        // large)
-        return false;
-    }
-
-    private void checkpoint(long lastIncludedIndex) {
-        // TODO (OPTIONAL SNAPSHOT IMPLEMENTATION):
-        // - Persist durable snapshot and metadata
-        // - Coordinate with Ratis snapshot/takeSnapshot if needed
     }
 
     @Override
