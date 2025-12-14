@@ -148,34 +148,21 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
         // 2) start raft server
         // 3) recover from snapshot/log if needed
         // 4) begin serving clients
-        initializeRatis();
-        startRatisServer();
+
+        // TODO: build raftGroup, properties, storage dirs, state machine, etc.
+        // raftGroup = buildRaftGroup();
+        // raftClient = buildRaftClient();
+
+        // TODO: construct and start raftServer using raftGroup + storage + stateMachine
+        // raftServer = ...
+        
         recoverFromCrash();
     }
-
-    /* =========================================================
-     * Client message handling (override)
-     * ========================================================= */
 
     @Override
     protected void handleMessageFromClient(byte[] bytes, NIOHeader header) {
         // TODO: parse request bytes, create requestId, enqueue pending, submit to Raft.
         // submitToRaft(bytes, header.sndr);
-    }
-
-    /* =========================================================
-     * Ratis init / bootstrap
-     * ========================================================= */
-
-    private void initializeRatis() {
-        // TODO: build raftGroup, properties, storage dirs, state machine, etc.
-        // raftGroup = buildRaftGroup();
-        // raftClient = buildRaftClient();
-    }
-
-    private void startRatisServer() {
-        // TODO: construct and start raftServer using raftGroup + storage + stateMachine
-        // raftServer = ...
     }
 
     private Object buildRaftGroup() {
@@ -239,15 +226,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
      * 2) replay committed log entries after snapshot index
      */
     private void recoverFromCrash() {
-        // TODO: restoreFromSnapshot();
-        // TODO: replayCommittedLogAfterSnapshot();
-    }
-
-    private void restoreFromSnapshot() {
         // TODO: load snapshot from snapshotDir, restore lastAppliedIndex and DB state
-    }
-
-    private void replayCommittedLogAfterSnapshot() {
         // TODO: ask Raft for committed entries after snapshot index and applyCommittedEntry(...)
     }
 
@@ -275,9 +254,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
         // TODO: ask Raft to trim logs if applicable
     }
 
-    /* =========================================================
-     * State management helpers (all kept here)
-     * ========================================================= */
+    // State manager methods
 
     public String getMyID() {
         return this.myID;
