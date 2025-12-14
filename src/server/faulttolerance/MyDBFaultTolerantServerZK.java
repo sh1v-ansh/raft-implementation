@@ -75,6 +75,30 @@ import java.util.UUID;
  */
 public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implements Closeable {
 
+    private final class MyStateMachine extends BaseStateMachine {
+
+        @Override
+        public CompletableFuture<Message> applyTransaction(TransactionContext trx) {
+            // Ratis calls this when a log entry is committed.
+            // You extract logIndex + commandBytes here,
+            // then apply to Cassandra and maybe reply to client.
+
+            // long logIndex = trx.getLogEntry().getIndex();
+            // byte[] commandBytes =
+            // trx.getStateMachineLogEntry().getLogData().toByteArray();
+
+            // byte[] response = applyCommittedEntry(logIndex, commandBytes);
+            // replyToClientAfterCommit(/*requestId*/, response);
+
+            return CompletableFuture.completedFuture(Message.EMPTY);
+        }
+
+        @Override
+        public long takeSnapshot() throws IOException {
+            // optional: if you implement snapshots
+            return getLastAppliedTermIndex().getIndex();
+        }
+    }
 
     public static final int MAX_LOG_SIZE = 400;
 
@@ -85,15 +109,15 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
     private final String myID;
     private final InetSocketAddress isaDB;
 
-
     // TODO: replace Object with actual Ratis types:
     private org.apache.ratis.server.RaftServer raftServer;
     private org.apache.ratis.client.RaftClient raftClient;
     private org.apache.ratis.protocol.RaftGroup raftGroup;
 
-    /* ******************************
+    /*
+     * ******************************
      * Replication / ordering state
-     * ******************************/
+     ******************************/
 
     /** Monotonically increasing "last applied" (e.g., Raft log index). */
     private final AtomicLong lastAppliedIndex = new AtomicLong(0L);
@@ -102,44 +126,48 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
      * Pending client requests waiting for commit.
      * Key could be requestId / logIndex / clientProvidedId depending on design.
      */
-    private final ConcurrentHashMap<String, InetSocketAddress> pendingRequests =
-            new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, InetSocketAddress> pendingRequests = new ConcurrentHashMap<>();
 
     /**
      * Track executed indices / ids if needed to prevent duplicates after retries.
      * (You can tune memory usage to respect MAX_LOG_SIZE constraint.)
      */
-    private final Set<Long> executedMarkers =
-            Collections.newSetFromMap(new ConcurrentHashMap<Long, Boolean>());
+    private final Set<Long> executedMarkers = Collections.newSetFromMap(new ConcurrentHashMap<Long, Boolean>());
 
-    /* ******************************
+    /*
+     * ******************************
      * Snapshot / checkpoint state
-     * ******************************/
+     ******************************/
 
     /** Directory for snapshots/checkpoints for this replica. */
     private final File snapshotDir;
 
     protected final Session session;
-	protected final Cluster cluster;
+    protected final Cluster cluster;
+    private final MyStateMachine stateMachine;
 
     /**
-     * @param nodeConfig Server name/address configuration information read from conf/servers.properties.
+     * @param nodeConfig Server name/address configuration information read from
+     *                   conf/servers.properties.
      * @param myID       The name of the keyspace to connect to, also the server id.
-     * @param isaDB      The socket address of the backend datastore (Cassandra) instance.
+     * @param isaDB      The socket address of the backend datastore (Cassandra)
+     *                   instance.
      */
     public MyDBFaultTolerantServerZK(NodeConfig<String> nodeConfig, String myID, InetSocketAddress isaDB)
             throws IOException {
         super(new InetSocketAddress(nodeConfig.getNodeAddress(myID),
-                        nodeConfig.getNodePort(myID) - ReplicatedServer.SERVER_PORT_OFFSET),
+                nodeConfig.getNodePort(myID) - ReplicatedServer.SERVER_PORT_OFFSET),
                 isaDB,
                 myID);
 
         this.nodeConfig = nodeConfig;
         this.myID = myID;
         this.isaDB = isaDB;
+        stateMachine = new MyStateMachine(); // This goes inside the raft builder as a property, so the raft has our
+                                             // statemachine
 
         this.cluster = Cluster.builder().addContactPoint(isaDB.getHostString()).build();
-		this.session = cluster.connect(myID);
+        this.session = cluster.connect(myID);
 
         this.snapshotDir = new File(RATIS_STORAGE_DIR + File.separator + myID);
 
@@ -155,47 +183,38 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
 
         // TODO: construct and start raftServer using raftGroup + storage + stateMachine
         // raftServer = ...
-        
+
+        // TODO: build RaftGroup from nodeConfig (ids + addresses)
+
+        // TODO: create RaftClient pointed at raftGroup
+
         recoverFromCrash();
     }
 
     @Override
     protected void handleMessageFromClient(byte[] bytes, NIOHeader header) {
         // TODO: parse request bytes, create requestId, enqueue pending, submit to Raft.
-        // submitToRaft(bytes, header.sndr);
-    }
 
-    private Object buildRaftGroup() {
-        // TODO: build RaftGroup from nodeConfig (ids + addresses)
-        return null;
-    }
-
-    private Object buildRaftClient() {
-        // TODO: create RaftClient pointed at raftGroup
-        return null;
-    }
-
-    /* =========================================================
-     * Raft submission + commit callbacks
-     * ========================================================= */
-
-    /**
-     * Submit a client request to Raft.
-     * @param requestBytes the original client request bytes
-     * @param clientAddr   the client socket address (for replying after commit)
-     */
-    private void submitToRaft(byte[] requestBytes, InetSocketAddress clientAddr) {
-        // TODO: send requestBytes via raftClient, capture returned log index / requestId
+        // Submit to raft need: (byte[] requestBytes, InetSocketAddress clientAddr)
+        // TODO: send requestBytes via raftClient, capture returned log index /
+        // requestId
         // TODO: map requestId -> clientAddr in pendingRequests
     }
+
+    /*
+     * =========================================================
+     * Raft submission + commit callbacks
+     * =========================================================
+     */
 
     /**
      * Apply a committed log entry to the DB state machine.
      * In Ratis, this is typically inside a StateMachine.applyTransaction(...).
      *
-     * @param logIndex the committed log index
+     * @param logIndex     the committed log index
      * @param commandBytes the replicated command
-     * @return application response bytes to send back (or store for read-only clients)
+     * @return application response bytes to send back (or store for read-only
+     *         clients)
      */
     private byte[] applyCommittedEntry(long logIndex, byte[] commandBytes) {
         // TODO: execute request on Cassandra (same logic as consistency server)
@@ -207,7 +226,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
     /**
      * Called when a client-visible response can be returned after commit+apply.
      *
-     * @param requestId your chosen request identifier
+     * @param requestId     your chosen request identifier
      * @param responseBytes bytes to send back to the client
      */
     private void replyToClientAfterCommit(String requestId, byte[] responseBytes) {
@@ -215,9 +234,11 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
         // TODO: remove pending entry
     }
 
-    /* =========================================================
+    /*
+     * =========================================================
      * Crash recovery
-     * ========================================================= */
+     * =========================================================
+     */
 
     /**
      * Recover application state after crash/restart.
@@ -227,12 +248,11 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
      */
     private void recoverFromCrash() {
         // TODO: load snapshot from snapshotDir, restore lastAppliedIndex and DB state
-        // TODO: ask Raft for committed entries after snapshot index and applyCommittedEntry(...)
+        // TODO: ask Raft for committed entries after snapshot index and
+        // applyCommittedEntry(...)
     }
 
-    /* =========================================================
-     * Checkpointing / snapshotting
-     * ========================================================= */
+    // Checkpointing / snapshotting
 
     /**
      * Decide if we should checkpoint/snapshot now (e.g., after every K commits).
@@ -250,67 +270,28 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer implement
      * @param lastIncludedIndex snapshot index
      */
     private void checkpoint(long lastIncludedIndex) {
-        // TODO: persist snapshot + metadata (lastIncludedIndex, any request dedupe window)
+        // TODO: persist snapshot + metadata (lastIncludedIndex, any request dedupe
+        // window)
         // TODO: ask Raft to trim logs if applicable
-    }
-
-    // State manager methods
-
-    public String getMyID() {
-        return this.myID;
-    }
-
-    public long getLastAppliedIndex() {
-        return this.lastAppliedIndex.get();
-    }
-
-    protected void setLastAppliedIndex(long idx) {
-        this.lastAppliedIndex.set(idx);
-    }
-
-    public Map<String, InetSocketAddress> getPendingRequestsView() {
-        return Collections.unmodifiableMap(this.pendingRequests);
-    }
-
-    protected void addPendingRequest(String requestId, InetSocketAddress clientAddr) {
-        this.pendingRequests.put(requestId, clientAddr);
-    }
-
-    protected InetSocketAddress removePendingRequest(String requestId) {
-        return this.pendingRequests.remove(requestId);
-    }
-
-    protected boolean isExecutedMarkerPresent(long marker) {
-        return this.executedMarkers.contains(marker);
-    }
-
-    protected void addExecutedMarker(long marker) {
-        this.executedMarkers.add(marker);
-    }
-
-    protected void clearExecutedMarkers() {
-        this.executedMarkers.clear();
     }
 
     @Override
     public void close() {
-        // TODO: shutdown raftClient, raftServer, any executors, then close superclass messenger
+        // TODO: shutdown raftClient, raftServer, any executors, then close superclass
+        // messenger
         super.close();
     }
 
     public static void main(String[] args) throws IOException {
-       
-            NodeConfig<String> nc = NodeConfigUtils.getNodeConfigFromFile(
-                    args[0],
-                    ReplicatedServer.SERVER_PREFIX,
-                    ReplicatedServer.SERVER_PORT_OFFSET
-            );
 
- 
-            new MyDBFaultTolerantServerZK(nc, args[1], args.length > 2 ? Util.getInetSocketAddressFromString(args[2])
-						: new InetSocketAddress("localhost", 9042));
-            
-         
+        NodeConfig<String> nc = NodeConfigUtils.getNodeConfigFromFile(
+                args[0],
+                ReplicatedServer.SERVER_PREFIX,
+                ReplicatedServer.SERVER_PORT_OFFSET);
+
+        new MyDBFaultTolerantServerZK(nc, args[1], args.length > 2 ? Util.getInetSocketAddressFromString(args[2])
+                : new InetSocketAddress("localhost", 9042));
+
     }
 
 }
