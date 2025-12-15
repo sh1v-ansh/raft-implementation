@@ -1,0 +1,842 @@
+JUnit version 4.12
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+Recovering server2
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server2
+Recovering server1
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server1
+Recovering server0
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server0
+Started all servers; serverProcesses={server2=Process[pid=91071, exitValue="not exited"], server1=Process[pid=91073, exitValue="not exited"], server0=Process[pid=91074, exitValue="not exited"]}
+
+Waiting (18 seconds) for ZK-or-other-approach servers to start
+[CONSTRUCTOR] MyDBFaultTolerantServerZK for server2 - handleMessageFromClient will be overridden
+[CONSTRUCTOR] MyDBFaultTolerantServerZK for server1 - handleMessageFromClient will be overridden
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[CONSTRUCTOR] MyDBFaultTolerantServerZK for server0 - handleMessageFromClient will be overridden
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] INFO org.apache.ratis.server.RaftServer - Starting Apache Ratis gRPC Support -- RaftServerProxy server2
+[main] INFO org.apache.ratis.server.RaftServer -                version: 3.2.1
+[main] INFO org.apache.ratis.server.RaftServer -                    url: git@github.com:onesizefitsquorum/ratis.git
+[main] INFO org.apache.ratis.server.RaftServer -               revision: 07a340e37662b1f0c9fd2dfde79fccb728060d34
+[main] INFO org.apache.ratis.server.RaftServer -                   java: OpenJDK 64-Bit Server VM 11.0.28+0
+[main] INFO org.apache.ratis.server.RaftServer -                   user: shivanshsoni
+[main] INFO org.apache.ratis.server.RaftServer - raft.rpc.type = GRPC (default)
+[main] INFO org.apache.ratis.server.RaftServer - Starting Apache Ratis gRPC Support -- RaftServerProxy server1
+[main] INFO org.apache.ratis.server.RaftServer -                version: 3.2.1
+[main] INFO org.apache.ratis.server.RaftServer -                    url: git@github.com:onesizefitsquorum/ratis.git
+[main] INFO org.apache.ratis.server.RaftServer -               revision: 07a340e37662b1f0c9fd2dfde79fccb728060d34
+[main] INFO org.apache.ratis.server.RaftServer -                   java: OpenJDK 64-Bit Server VM 11.0.28+0
+[main] INFO org.apache.ratis.server.RaftServer -                   user: shivanshsoni
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.host = null (fallback to raft.grpc.server.host)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.port = 13002 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.server.RaftServer - raft.rpc.type = GRPC (default)[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.host = null (fallback to raft.grpc.server.host)
+
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.port = 13002 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.port = 13002 (custom)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.message.size.max = 64MB (=67108864) (default)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.flow.control.window = 1MB (=1048576) (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.request.timeout = 3000ms (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.heartbeat.channel = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.buffer.byte-limit = 4MB (=4194304) (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.cached = true (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.size = 32 (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.host = null (fallback to raft.grpc.server.host)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.port = 13001 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.host = null (fallback to raft.grpc.server.host)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.port = 13001 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.port = 13001 (custom)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.message.size.max = 64MB (=67108864) (default)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.flow.control.window = 1MB (=1048576) (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.request.timeout = 3000ms (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.heartbeat.channel = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.buffer.byte-limit = 4MB (=4194304) (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.cached = true (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.size = 32 (default)
+[main] INFO org.apache.ratis.server.RaftServer - Starting Apache Ratis gRPC Support -- RaftServerProxy server0
+[main] INFO org.apache.ratis.server.RaftServer -                version: 3.2.1
+[main] INFO org.apache.ratis.server.RaftServer -                    url: git@github.com:onesizefitsquorum/ratis.git
+[main] INFO org.apache.ratis.server.RaftServer -               revision: 07a340e37662b1f0c9fd2dfde79fccb728060d34
+[main] INFO org.apache.ratis.server.RaftServer -                   java: OpenJDK 64-Bit Server VM 11.0.28+0
+[main] INFO org.apache.ratis.server.RaftServer -                   user: shivanshsoni
+[main] INFO org.apache.ratis.server.RaftServer - raft.rpc.type = GRPC (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.host = null (fallback to raft.grpc.server.host)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.admin.port = 13000 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.host = null (fallback to raft.grpc.server.host)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.client.port = 13000 (fallback to raft.grpc.server.port)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.port = 13000 (custom)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.message.size.max = 64MB (=67108864) (default)
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - raft.grpc.flow.control.window = 1MB (=1048576) (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.request.timeout = 3000ms (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.heartbeat.channel = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.buffer.byte-limit = 4MB (=4194304) (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.cached = true (default)
+[main] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.async.request.thread.pool.size = 32 (default)
+[main] INFO org.apache.ratis.server.impl.DataStreamServerImpl - raft.datastream.type = DISABLED (default)
+[main] INFO org.apache.ratis.server.impl.DataStreamServerImpl - raft.datastream.type = DISABLED (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.sleep.deviation.threshold = 300ms (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.close.threshold = 60s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.leader.step-down.wait-time = 10s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.sleep.deviation.threshold = 300ms (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.close.threshold = 60s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.leader.step-down.wait-time = 10s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.dir = [/Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft] (custom)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.cached = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.size = 0 (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.dir = [/Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft] (custom)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.cached = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.size = 0 (default)
+[main] INFO org.apache.ratis.server.RaftServer - server1: addNew group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] returns group-1CF71D6BC4DD:java.util.concurrent.CompletableFuture@71154f21[Not completed]
+[main] INFO org.apache.ratis.server.RaftServer - server2: addNew group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] returns group-1CF71D6BC4DD:java.util.concurrent.CompletableFuture@5b69d40d[Not completed]
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server1: new RaftServerImpl for group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] with MyStateMachine-1:uninitialized
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server2: new RaftServerImpl for group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] with MyStateMachine-1:uninitialized
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.min = 150ms (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.max = 300ms (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.sleep.time = 25ms (default)[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.min = 150ms (default)
+
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.slowness.timeout = 60s (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.max = 300ms (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.sleep.time = 25ms (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.slowness.timeout = 60s (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.member.majority-add = false (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.member.majority-add = false (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: ConfigurationManager, init=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}, confs=<EMPTY_MAP>
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: ConfigurationManager, init=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}, confs=<EMPTY_MAP>
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.notification.no-leader.timeout = 60s (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.notification.no-leader.timeout = 60s (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.timeout = 10s (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.expirytime = 60s (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.statistics.expirytime = 100ms (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.timeout = 10s (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.expirytime = 60s (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.statistics.expirytime = 100ms (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.option = DEFAULT (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.read-after-write-consistent.write-index-cache.expiry-time = 60s (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.option = DEFAULT (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.read-after-write-consistent.write-index-cache.expiry-time = 60s (default)
+[main] INFO org.apache.ratis.server.impl.DataStreamServerImpl - raft.datastream.type = DISABLED (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.sleep.deviation.threshold = 300ms (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.close.threshold = 60s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.leader.step-down.wait-time = 10s (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.dir = [/Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft] (custom)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.cached = true (default)
+[main] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.proxy.size = 0 (default)
+[main] INFO org.apache.ratis.server.RaftServer - server0: addNew group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] returns group-1CF71D6BC4DD:java.util.concurrent.CompletableFuture@2516fc68[Not completed]
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.install.snapshot.enabled = true (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.cached = true (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.size = 0 (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.cached = true (default)
+[server2-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.size = 0 (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.install.snapshot.enabled = true (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.cached = true (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.size = 0 (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server0: new RaftServerImpl for group-1CF71D6BC4DD:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000] with MyStateMachine-1:uninitialized
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.cached = true (default)
+[server1-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.size = 0 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.free-space.min = 0MB (=0) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.corruption.policy = EXCEPTION (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.min = 150ms (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.timeout.max = 300ms (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.sleep.time = 25ms (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.slowness.timeout = 60s (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.member.majority-add = false (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.free-space.min = 0MB (=0) (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.corruption.policy = EXCEPTION (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: ConfigurationManager, init=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}, confs=<EMPTY_MAP>
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.notification.no-leader.timeout = 60s (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.timeout = 10s (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.expirytime = 60s (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.retrycache.statistics.expirytime = 100ms (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - The storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd does not exist. Creating ...
+[server1-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - The storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd does not exist. Creating ...
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.option = DEFAULT (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.read-after-write-consistent.write-index-cache.expiry-time = 60s (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - Lock on /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/in_use.lock acquired by nodename 91073@vl965-172-31-44-123.wireless.umass.edu
+[server2-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - Lock on /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/in_use.lock acquired by nodename 91071@vl965-172-31-44-123.wireless.umass.edu
+[server1-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorage - Storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd has been successfully formatted.
+[server2-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorage - Storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd has been successfully formatted.
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.use.memory = false (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.use.memory = false (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.install.snapshot.enabled = true (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.cached = true (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.server.size = 0 (default)
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.cached = true (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: getLatestSnapshot(MyStateMachine-1:server1:group-1CF71D6BC4DD) returns null
+[server1-impl-thread1] INFO org.apache.ratis.server.raftlog.RaftLog - server1@group-1CF71D6BC4DD-SegmentedRaftLog: snapshotIndexFromStateMachine = -1
+[server0-groupManagement] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.threadpool.client.size = 0 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.gap = 1024 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: getLatestSnapshot(MyStateMachine-1:server2:group-1CF71D6BC4DD) returns null
+[server2-impl-thread1] INFO org.apache.ratis.server.raftlog.RaftLog - server2@group-1CF71D6BC4DD-SegmentedRaftLog: snapshotIndexFromStateMachine = -1
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.read.timeout = 1000ms (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.preservation.log.num = 0 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.gap = 1024 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.storage.free-space.min = 0MB (=0) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.read.timeout = 1000ms (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.corruption.policy = EXCEPTION (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.preservation.log.num = 0 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.size.max = 8MB (=8388608) (custom)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.size.max = 8MB (=8388608) (custom)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.num.max = 6 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.size.max = 200MB (=209715200) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.num.max = 6 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.size.max = 200MB (=209715200) (default)
+[server1-impl-thread1] INFO org.apache.ratis.util.AwaitToRun - Thread[server1@group-1CF71D6BC4DD-cacheEviction-AwaitToRun,5,main] started
+[server2-impl-thread1] INFO org.apache.ratis.util.AwaitToRun - Thread[server2@group-1CF71D6BC4DD-cacheEviction-AwaitToRun,5,main] started
+[server1-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - new server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker for RaftStorageImpl:Storage Directory /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.byte-limit = 64MB (=67108864) (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.element-limit = 4096 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - new server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker for RaftStorageImpl:Storage Directory /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.byte-limit = 64MB (=67108864) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.element-limit = 4096 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.preallocated.size = 4MB (=4194304) (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.force.sync.num = 128 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync = true (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout = 10s (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.preallocated.size = 4MB (=4194304) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.force.sync.num = 128 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout.retry = -1 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync = true (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout = 10s (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout.retry = -1 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.write.buffer.size = 8MB (=8388608) (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.write.buffer.size = 8MB (=8388608) (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.unsafe-flush.enabled = false (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.async-flush.enabled = false (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.caching.enabled = false (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.unsafe-flush.enabled = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - The storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd does not exist. Creating ...
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.async-flush.enabled = false (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.caching.enabled = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorageDirectory - Lock on /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/in_use.lock acquired by nodename 91074@vl965-172-31-44-123.wireless.umass.edu
+[server1-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: flushIndex: setUnconditionally 0 -> -1
+[server1-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: safeCacheEvictIndex: setUnconditionally 0 -> -1
+[server2-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: flushIndex: setUnconditionally 0 -> -1
+[server2-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: safeCacheEvictIndex: setUnconditionally 0 -> -1
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: start as a follower, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from      null to FOLLOWER at term 0 for startAsFollower
+[server1-impl-thread1] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-FollowerState
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: start as a follower, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: changes role from      null to FOLLOWER at term 0 for startAsFollower
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server2-impl-thread1] INFO org.apache.ratis.server.impl.RoleInfo - server2: start server2@group-1CF71D6BC4DD-FollowerState
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server2-impl-thread1] INFO org.apache.ratis.util.JmxRegister - Successfully registered JMX Bean with object name Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server2[server1-impl-thread1] INFO org.apache.ratis.util.JmxRegister - Successfully registered JMX Bean with object name Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server1
+
+[server2-impl-thread1] INFO org.apache.ratis.util.JmxRegister - register mxBean class org.apache.ratis.server.impl.RaftServerJmxAdapter as Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server2
+[server1-impl-thread1] INFO org.apache.ratis.util.JmxRegister - register mxBean class org.apache.ratis.server.impl.RaftServerJmxAdapter as Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server1[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-stop.enabled = true (default)
+
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-remove.enabled = true (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.enabled = true (custom)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.threshold = 200 (custom)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.retention.file.num = -1 (default)
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.upto.snapshot.index = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.storage.RaftStorage - Storage directory /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd has been successfully formatted.
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-stop.enabled = true (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-remove.enabled = true (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.enabled = true (custom)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.threshold = 200 (custom)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.retention.file.num = -1 (default)
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.upto.snapshot.index = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.use.memory = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: getLatestSnapshot(MyStateMachine-1:server0:group-1CF71D6BC4DD) returns null
+[server0-impl-thread1] INFO org.apache.ratis.server.raftlog.RaftLog - server0@group-1CF71D6BC4DD-SegmentedRaftLog: snapshotIndexFromStateMachine = -1
+[server1-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: Successfully started.
+[server2-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: Successfully started.
+[main] INFO org.apache.ratis.server.RaftServer - server1: start RPC server
+[main] INFO org.apache.ratis.server.RaftServer - server2: start RPC server
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.gap = 1024 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.read.timeout = 1000ms (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.preservation.log.num = 0 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.size.max = 8MB (=8388608) (custom)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.num.max = 6 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.segment.cache.size.max = 200MB (=209715200) (default)
+[server0-impl-thread1] INFO org.apache.ratis.util.AwaitToRun - Thread[server0@group-1CF71D6BC4DD-cacheEviction-AwaitToRun,5,main] started
+[server0-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - new server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker for RaftStorageImpl:Storage Directory /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.byte-limit = 64MB (=67108864) (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.queue.element-limit = 4096 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.preallocated.size = 4MB (=4194304) (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.force.sync.num = 128 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync = true (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout = 10s (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.sync.timeout.retry = -1 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.write.buffer.size = 8MB (=8388608) (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.unsafe-flush.enabled = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.async-flush.enabled = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.statemachine.data.caching.enabled = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: flushIndex: setUnconditionally 0 -> -1
+[server0-impl-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: safeCacheEvictIndex: setUnconditionally 0 -> -1
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: start as a follower, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: changes role from      null to FOLLOWER at term 0 for startAsFollower
+[server0-impl-thread1] INFO org.apache.ratis.server.impl.RoleInfo - server0: start server0@group-1CF71D6BC4DD-FollowerState
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server0-impl-thread1] INFO org.apache.ratis.util.JmxRegister - Successfully registered JMX Bean with object name Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server0
+[server0-impl-thread1] INFO org.apache.ratis.util.JmxRegister - register mxBean class org.apache.ratis.server.impl.RaftServerJmxAdapter as Ratis:service=RaftServer,group=group-1CF71D6BC4DD,id=server0
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-stop.enabled = true (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.trigger-when-remove.enabled = true (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.enabled = true (custom)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.auto.trigger.threshold = 200 (custom)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.snapshot.retention.file.num = -1 (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.purge.upto.snapshot.index = false (default)
+[server0-impl-thread1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: Successfully started.
+[main] INFO org.apache.ratis.server.RaftServer - server0: start RPC server
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - server2: GrpcServicesImpl started, listening on 13002
+[JvmPauseMonitor0] INFO org.apache.ratis.util.JvmPauseMonitor - JvmPauseMonitor-server2: Started
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - server1: GrpcServicesImpl started, listening on 13001
+[JvmPauseMonitor0] INFO org.apache.ratis.util.JvmPauseMonitor - JvmPauseMonitor-server1: Started
+[main] INFO org.apache.ratis.grpc.server.GrpcServicesImpl - server0: GrpcServicesImpl started, listening on 13000
+[JvmPauseMonitor0] INFO org.apache.ratis.util.JvmPauseMonitor - JvmPauseMonitor-server0: Started
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server1@group-1CF71D6BC4DD-FollowerState: change to CANDIDATE, lastRpcElapsedTime:194298333ns, electionTimeout:187ms
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server1: shutdown server1@group-1CF71D6BC4DD-FollowerState
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from  FOLLOWER to CANDIDATE at term 0 for changeToCandidate
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.pre-vote = true (default)
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-LeaderElection1
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: submit vote requests at term 0 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server2@group-1CF71D6BC4DD-FollowerState: change to CANDIDATE, lastRpcElapsedTime:201163959ns, electionTimeout:194ms
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server2: shutdown server2@group-1CF71D6BC4DD-FollowerState
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: changes role from  FOLLOWER to CANDIDATE at term 0 for changeToCandidate
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.pre-vote = true (default)
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server2: start server2@group-1CF71D6BC4DD-LeaderElection1
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: submit vote requests at term 0 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1-1] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server2|127.0.0.1:13002
+[server1@group-1CF71D6BC4DD-LeaderElection1-2] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server0|127.0.0.1:13000
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server2@group-1CF71D6BC4DD-LeaderElection1-1] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server1|127.0.0.1:13001
+[server2@group-1CF71D6BC4DD-LeaderElection1-2] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server0|127.0.0.1:13000
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server0@group-1CF71D6BC4DD-FollowerState: change to CANDIDATE, lastRpcElapsedTime:261706584ns, electionTimeout:258ms
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server0: shutdown server0@group-1CF71D6BC4DD-FollowerState
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: changes role from  FOLLOWER to CANDIDATE at term 0 for changeToCandidate
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.leaderelection.pre-vote = true (default)
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server0: start server0@group-1CF71D6BC4DD-LeaderElection1
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: submit vote requests at term 0 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server0@group-1CF71D6BC4DD-LeaderElection1-2] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server1|127.0.0.1:13001
+[server0@group-1CF71D6BC4DD-LeaderElection1-1] INFO org.apache.ratis.grpc.server.GrpcServerProtocolClient - Build channel for server2|127.0.0.1:13002
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1: PRE_VOTE TIMEOUT received 0 response(s) and 0 exception(s):
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: result TIMEOUT
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 1: submit vote requests at term 0 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server2, group-1CF71D6BC4DD, 0, <PROTO_DEFAULT>)
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server1, group-1CF71D6BC4DD, 0, <PROTO_DEFAULT>)
+[grpc-default-executor-1] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-CANDIDATE: accept PRE_VOTE from server1: our priority 0 <= candidate's priority 0
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server1@group-1CF71D6BC4DD-CANDIDATE: accept PRE_VOTE from server2: our priority 0 <= candidate's priority 0
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server1<-server2#0:OK-t0-last:<INITIAL_VALUE>. Peer's state: server2@group-1CF71D6BC4DD:t0, leader=null, voted=, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:lastnull, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server2<-server1#0:OK-t0-last:<INITIAL_VALUE>. Peer's state: server1@group-1CF71D6BC4DD:t0, leader=null, voted=, raftlog=Memoized:server1@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:lastnull, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1: PRE_VOTE PASSED received 1 response(s) and 0 exception(s):
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1: PRE_VOTE TIMEOUT received 0 response(s) and 0 exception(s):
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server1<-server2#0:OK-t0-last:<INITIAL_VALUE>
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: result TIMEOUT
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 1: result PASSED
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 1: submit vote requests at term 0 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server2, group-1CF71D6BC4DD, 0, <PROTO_DEFAULT>)
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server1@group-1CF71D6BC4DD-CANDIDATE: accept PRE_VOTE from server2: our priority 0 <= candidate's priority 0
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server2<-server1#0:OK-t1-last:<INITIAL_VALUE>. Peer's state: server1@group-1CF71D6BC4DD:t1, leader=null, voted=server1, raftlog=Memoized:server1@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:lastnull, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 ELECTION round 1: submit vote requests at term 1 for conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.min = 150ms (fallback to raft.server.rpc.timeout.min)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.rpc.first-election.timeout.max = 300ms (fallback to raft.server.rpc.timeout.max)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1: PRE_VOTE DISCOVERED_A_NEW_TERM (term=1) received 1 response(s) and 0 exception(s):
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server2<-server1#0:OK-t1-last:<INITIAL_VALUE>
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server2@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 1: result DISCOVERED_A_NEW_TERM (term=1)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: changes role from CANDIDATE to FOLLOWER at term 0 for DISCOVERED_A_NEW_TERM (term=1)
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server2: shutdown server2@group-1CF71D6BC4DD-LeaderElection1
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server2: start server2@group-1CF71D6BC4DD-FollowerState
+[server2@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: set firstElectionSinceStartup to false for DISCOVERED_A_NEW_TERM (term=1)
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(ELECTION, server1, group-1CF71D6BC4DD, 1, <PROTO_DEFAULT>)
+[grpc-default-executor-1] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-FOLLOWER: accept ELECTION from server1: our priority 0 <= candidate's priority 0
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: changes role from  FOLLOWER to FOLLOWER at term 1 for candidate:server1
+[grpc-default-executor-1] INFO org.apache.ratis.server.impl.RoleInfo - server2: shutdown server2@group-1CF71D6BC4DD-FollowerState
+[grpc-default-executor-1] INFO org.apache.ratis.server.impl.RoleInfo - server2: start server2@group-1CF71D6BC4DD-FollowerState
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server2@group-1CF71D6BC4DD-FollowerState was interrupted
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to ELECTION vote request: server1<-server2#0:OK-t1-last:<INITIAL_VALUE>. Peer's state: server2@group-1CF71D6BC4DD:t1, leader=null, voted=server1, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:lastnull, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1: ELECTION PASSED received 1 response(s) and 0 exception(s):
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server1<-server2#0:OK-t1-last:<INITIAL_VALUE>
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection1 ELECTION round 1: result PASSED
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server1: shutdown server1@group-1CF71D6BC4DD-LeaderElection1
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from CANDIDATE to LEADER at term 1 for changeToLeader
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.staging.catchup.gap = 1000 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.staging.timeout = 900ms (fallback to raft.server.rpc.timeout.max)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.element-limit = 4096 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.byte-limit = 64MB (=67108864) (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.timeout = 10s (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.timeout.denomination = 1s (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.element-limit = 65536 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.leader.lease.enabled = false (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.leader.lease.timeout.ratio = 0.9 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.log-metadata.enabled = true (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.follower.gap.ratio.max = -1.0 (default)
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server0, group-1CF71D6BC4DD, 0, <PROTO_DEFAULT>)
+[grpc-default-executor-1] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-FOLLOWER: accept PRE_VOTE from server0: our priority 0 <= candidate's priority 0
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server0<-server2#0:OK-t1-last:<INITIAL_VALUE>. Peer's state: server2@group-1CF71D6BC4DD:t1, leader=null, voted=server1, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:lastnull, conf=conf: {index: -1, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server0, group-1CF71D6BC4DD, 0, <PROTO_DEFAULT>)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.snapshot.chunk.size.max = 16MB (=16777216) (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.buffer.element-limit = 0 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection1: PRE_VOTE DISCOVERED_A_NEW_TERM (term=1) received 1 response(s) and 0 exception(s):
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server0<-server2#0:OK-t1-last:<INITIAL_VALUE>
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection1 PRE_VOTE round 0: result DISCOVERED_A_NEW_TERM (term=1)
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: changes role from CANDIDATE to FOLLOWER at term 0 for DISCOVERED_A_NEW_TERM (term=1)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.wait-time.min = 1ms (default)
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server0: shutdown server0@group-1CF71D6BC4DD-LeaderElection1
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.leader.outstanding.appends.max = 8 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.install_snapshot.request.element-limit = 8 (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.install_snapshot.request.timeout = 3000ms (default)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.log-message.batch.duration = 5s (default)
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server0: start server0@group-1CF71D6BC4DD-FollowerState
+[server0@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: set firstElectionSinceStartup to false for DISCOVERED_A_NEW_TERM (term=1)
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-LeaderStateImpl
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: set firstElectionSinceStartup to false for becomeLeader
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: change Leader from null to server1 at term 1 for becomeLeader, leader elected after 530ms
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Starting segment from index:0
+[server1@group-1CF71D6BC4DD-LeaderElection1] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: set configuration conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server1@group-1CF71D6BC4DD-LEADER: reject PRE_VOTE from server0: this server is the leader and still has leadership
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server0<-server1#0:FAIL-t1-last:(t:1, i:0). Peer's state: server1@group-1CF71D6BC4DD:t1, leader=server1, voted=server1, raftlog=Memoized:server1@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c-1:last(t:1, i:0), conf=conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_0 at position 0
+[server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: change Leader from null to server1 at term 1 for APPEND_ENTRIES, leader elected after 529ms
+[grpc-default-executor-1] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: change Leader from null to server1 at term 1 for APPEND_ENTRIES, leader elected after 573ms
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: set configuration conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2-server-thread2] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Starting segment from index:0
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: set configuration conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0-server-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Starting segment from index:0
+[server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_0 at position 0
+[server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_0 at position 0
+[server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0
+[server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0
+[server1@group-1CF71D6BC4DD-StateMachineUpdater] INFO org.apache.ratis.server.RaftServer$Division - Leader server1@group-1CF71D6BC4DD-LeaderStateImpl is ready since appliedIndex == startIndex == 0
+.test31_GracefulExecutionSingleRequest [server2] handleMessageFromClient called with: insert into grade (id, events) values (598821126, []);
+[server2] handleMessageFromClient called with: insert into grade (id, events) values (598821126, []);
+[server2] Proposing to Raft: -1|insert into grade (id, events) values (598821126, []);|server2|server2-23974974876208--1
+[grpc-default-executor-0] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-72596F794CA3: Failed* RaftClientRequest:client-72596F794CA3->server2@group-1CF71D6BC4DD, cid=1, seq=1*, Watch(0), null
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.NotLeaderException: Server server2@group-1CF71D6BC4DD is not the leader, suggested leader is: server1|127.0.0.1:13001
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.completeReplyExceptionally(GrpcClientProtocolClient.java:383)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.access$000(GrpcClientProtocolClient.java:289)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:303)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:294)
+	at org.apache.ratis.thirdparty.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onMessage(ClientCalls.java:568)
+	at org.apache.ratis.thirdparty.io.grpc.ForwardingClientCallListener.onMessage(ForwardingClientCallListener.java:33)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1MessagesAvailable.runInternal(ClientCallImpl.java:661)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1MessagesAvailable.runInContext(ClientCallImpl.java:648)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at org.apache.ratis.thirdparty.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.ratis.protocol.exceptions.NotLeaderException: Server server2@group-1CF71D6BC4DD is not the leader, suggested leader is: server1|127.0.0.1:13001
+	at org.apache.ratis.client.impl.ClientProtoUtils.toRaftClientReply(ClientProtoUtils.java:402)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:299)
+	... 10 more
+
+[server2] RAFT PROPOSAL SUCCEEDED
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server0@group-1CF71D6BC4DD-FollowerState: change to CANDIDATE, lastRpcElapsedTime:260878458ns, electionTimeout:191ms
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server0: shutdown server0@group-1CF71D6BC4DD-FollowerState
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: changes role from  FOLLOWER to CANDIDATE at term 1 for changeToCandidate
+[server0@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server0: start server0@group-1CF71D6BC4DD-LeaderElection2
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: change Leader from server1 to null at term 1 for PRE_VOTE
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2 PRE_VOTE round 0: submit vote requests at term 1 for conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server0, group-1CF71D6BC4DD, 1, (t:1, i:2))
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server0, group-1CF71D6BC4DD, 1, (t:1, i:2))
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server1@group-1CF71D6BC4DD-LEADER: reject PRE_VOTE from server0: this server is the leader and still has leadership
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server0<-server1#0:FAIL-t1-last:(t:1, i:2). Peer's state: server1@group-1CF71D6BC4DD:t1, leader=server1, voted=server1, raftlog=Memoized:server1@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c2:last(t:1, i:2), conf=conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-2] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-FOLLOWER: accept PRE_VOTE from server0: our priority 0 <= candidate's priority 0
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server0<-server2#0:OK-t1-last:(t:1, i:2). Peer's state: server2@group-1CF71D6BC4DD:t1, leader=server1, voted=server1, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c1:last(t:1, i:2), conf=conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2: PRE_VOTE PASSED received 1 response(s) and 0 exception(s):
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server0<-server2#0:OK-t1-last:(t:1, i:2)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2 PRE_VOTE round 0: result PASSED
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2 ELECTION round 0: submit vote requests at term 2 for conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(ELECTION, server0, group-1CF71D6BC4DD, 2, (t:1, i:2))
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: receive requestVote(ELECTION, server0, group-1CF71D6BC4DD, 2, (t:1, i:2))
+[grpc-default-executor-2] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-FOLLOWER: accept ELECTION from server0: our priority 0 <= candidate's priority 0
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server1@group-1CF71D6BC4DD-LEADER: accept ELECTION from server0: our priority 0 <= candidate's priority 0
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: changes role from  FOLLOWER to FOLLOWER at term 1 for candidate:server0
+[grpc-default-executor-2] INFO org.apache.ratis.server.impl.RoleInfo - server2: shutdown server2@group-1CF71D6BC4DD-FollowerState
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from    LEADER to FOLLOWER at term 1 for candidate:server0
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: change Leader from server1 to null at term 2 for updateCurrentTerm[grpc-default-executor-0] INFO org.apache.ratis.server.impl.RoleInfo - server1: shutdown server1@group-1CF71D6BC4DD-LeaderStateImpl
+
+[server2@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server2@group-1CF71D6BC4DD-FollowerState was interrupted
+[grpc-default-executor-2] INFO org.apache.ratis.server.impl.RoleInfo - server2: start server2@group-1CF71D6BC4DD-FollowerState
+[server1@group-1CF71D6BC4DD->server2-GrpcLogAppender-LogAppenderDaemon] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server2-GrpcLogAppender: Wait interrupted by java.lang.InterruptedException
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.PendingRequests - server1@group-1CF71D6BC4DD-PendingRequests: sendNotLeaderResponses
+[server1@group-1CF71D6BC4DD->server0-GrpcLogAppender-LogAppenderDaemon] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server0-GrpcLogAppender: Wait interrupted by java.lang.InterruptedException
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to ELECTION vote request: server0<-server2#0:OK-t2-last:(t:1, i:2). Peer's state: server2@group-1CF71D6BC4DD:t2, leader=null, voted=server0, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c1:last(t:1, i:2), conf=conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-2] INFO org.apache.ratis.grpc.server.GrpcServerProtocolService - server2: Completed APPEND_ENTRIES, lastRequest: server1->server2#208-t1,previous=(t:1, i:1),leaderCommit=1,initializing? false,entries: size=1, first=(t:1, i:2), METADATAENTRY(c:1) 
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2: ELECTION PASSED received 1 response(s) and 0 exception(s):
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server0<-server2#0:OK-t2-last:(t:1, i:2)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server0@group-1CF71D6BC4DD-LeaderElection2 ELECTION round 0: result PASSED
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.RoleInfo - server0: shutdown server0@group-1CF71D6BC4DD-LeaderElection2
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: changes role from CANDIDATE to LEADER at term 2 for changeToLeader
+[grpc-default-executor-1] WARN org.apache.ratis.grpc.server.GrpcServerProtocolService - server2: APPEND_ENTRIES onError, lastRequest: null: org.apache.ratis.thirdparty.io.grpc.StatusRuntimeException: CANCELLED: client cancelled
+[grpc-default-executor-2] INFO org.apache.ratis.grpc.server.GrpcServerProtocolService - server2: Completed APPEND_ENTRIES, lastReply: null 
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.staging.catchup.gap = 1000 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.staging.timeout = 900ms (fallback to raft.server.rpc.timeout.max)
+[grpc-default-executor-1] INFO org.apache.ratis.grpc.server.GrpcServerProtocolService - server0: Completed APPEND_ENTRIES, lastRequest: server1->server0#207-t1,previous=(t:1, i:1),leaderCommit=1,initializing? false,entries: size=1, first=(t:1, i:2), METADATAENTRY(c:1) 
+[grpc-default-executor-7] INFO org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server2-AppendLogResponseHandler: follower responses appendEntries COMPLETED
+[grpc-default-executor-4] INFO org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server0-GrpcLogAppender is already stopped[grpc-default-executor-2] WARN org.apache.ratis.grpc.server.GrpcServerProtocolService - server0: APPEND_ENTRIES onError, lastRequest: null: org.apache.ratis.thirdparty.io.grpc.StatusRuntimeException: CANCELLED: client cancelled
+
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: change Leader from server1 to null at term 1 for candidate:server0
+[grpc-default-executor-1] INFO org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server2-GrpcLogAppender is already stopped
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-FollowerState
+[grpc-default-executor-1] INFO org.apache.ratis.grpc.server.GrpcServerProtocolService - server0: Completed APPEND_ENTRIES, lastReply: null 
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.element-limit = 4096 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.byte-limit = 64MB (=67108864) (default)
+[grpc-default-executor-7] INFO org.apache.ratis.grpc.server.GrpcLogAppender - server1@group-1CF71D6BC4DD->server0-AppendLogResponseHandler: follower responses appendEntries COMPLETED[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.timeout = 10s (default)
+
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.timeout.denomination = 1s (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.watch.element-limit = 65536 (default)
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD replies to ELECTION vote request: server0<-server1#0:OK-t2-last:(t:1, i:2). Peer's state: server1@group-1CF71D6BC4DD:t2, leader=null, voted=server0, raftlog=Memoized:server1@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c2:last(t:1, i:2), conf=conf: {index: 0, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.leader.lease.enabled = false (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.read.leader.lease.timeout.ratio = 0.9 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.log-metadata.enabled = true (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.write.follower.gap.ratio.max = -1.0 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.snapshot.chunk.size.max = 16MB (=16777216) (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.buffer.element-limit = 0 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServerConfigKeys - raft.server.log.appender.wait-time.min = 1ms (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.leader.outstanding.appends.max = 8 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.install_snapshot.request.element-limit = 8 (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.install_snapshot.request.timeout = 3000ms (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.grpc.GrpcConfigKeys - raft.grpc.server.log-message.batch.duration = 5s (default)
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.RoleInfo - server0: start server0@group-1CF71D6BC4DD-LeaderStateImpl
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: change Leader from null to server0 at term 2 for becomeLeader, leader elected after 43ms
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolling segment log-0_2 to index:2
+[server0@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: set configuration conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolled log segment from /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0 to /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_0-2
+[server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_3 at position 0
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: change Leader from null to server0 at term 2 for APPEND_ENTRIES, leader elected after 36ms[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: change Leader from null to server0 at term 2 for APPEND_ENTRIES, leader elected after 26ms
+
+[server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server0@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server0/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_3
+[grpc-default-executor-2] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: set configuration conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2-server-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolling segment log-0_2 to index:2
+[grpc-default-executor-7] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: set configuration conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolled log segment from /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0 to /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_0-2
+[server1-server-thread1] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolling segment log-0_2 to index:2
+[server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_3 at position 0
+[server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: Rolled log segment from /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_0 to /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_0-2
+[server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.BufferedWriteChannel - open log_inprogress_3 at position 0
+[server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server2@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server2/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_3
+[server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker] INFO org.apache.ratis.server.raftlog.segmented.SegmentedRaftLogWorker - server1@group-1CF71D6BC4DD-SegmentedRaftLogWorker: created new log segment /Users/shivanshsoni/Projects/raft/ratis_storage/server1/raft/7642f098-3126-34ab-8306-1cf71d6bc4dd/current/log_inprogress_3
+[server0@group-1CF71D6BC4DD-StateMachineUpdater] INFO org.apache.ratis.server.RaftServer$Division - Leader server0@group-1CF71D6BC4DD-LeaderStateImpl is ready since appliedIndex == startIndex == 3
+[server2] handleMessageFromClient called with: update grade SET events=events+[0] where id=598821126;
+[server2] handleMessageFromClient called with: update grade SET events=events+[0] where id=598821126;
+[server2] Proposing to Raft: -1|update grade SET events=events+[0] where id=598821126;|server2|server2-23975982809375--1
+[AbstractPacketDemultiplexer] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-72596F794CA3: Failed* RaftClientRequest:client-72596F794CA3->server1@group-1CF71D6BC4DD, cid=3, seq=3, RW, Message:2d317c75706461746520...(size=91)
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.AlreadyClosedException: client-72596F794CA3->server1 is closed.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.uniAcceptNow(CompletableFuture.java:743)
+	at java.base/java.util.concurrent.CompletableFuture.uniAcceptStage(CompletableFuture.java:731)
+	at java.base/java.util.concurrent.CompletableFuture.thenAccept(CompletableFuture.java:2114)
+	at org.apache.ratis.client.impl.OrderedAsync.sendRequestWithRetry(OrderedAsync.java:206)
+	at org.apache.ratis.util.SlidingWindow$Client.sendOrDelayRequest(SlidingWindow.java:306)
+	at org.apache.ratis.util.SlidingWindow$Client.submitNewRequest(SlidingWindow.java:294)
+	at org.apache.ratis.client.impl.OrderedAsync.send(OrderedAsync.java:173)
+	at org.apache.ratis.client.impl.AsyncImpl.send(AsyncImpl.java:41)
+	at org.apache.ratis.client.impl.AsyncImpl.send(AsyncImpl.java:46)
+	at org.apache.ratis.client.api.AsyncApi.send(AsyncApi.java:46)
+	at server.faulttolerance.MyDBFaultTolerantServerZK.handleMessageFromClient(MyDBFaultTolerantServerZK.java:372)
+	at server.SingleServer$1.handleMessage(SingleServer.java:42)
+	at server.SingleServer$1.handleMessage(SingleServer.java:1)
+	at edu.umass.cs.nio.AbstractPacketDemultiplexer$Tasker.run(AbstractPacketDemultiplexer.java:377)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.ratis.protocol.exceptions.AlreadyClosedException: client-72596F794CA3->server1 is closed.
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.onNext(GrpcClientProtocolClient.java:338)
+	at org.apache.ratis.grpc.client.GrpcClientRpc.sendRequestAsync(GrpcClientRpc.java:71)
+	... 17 more
+
+[server2] RAFT PROPOSAL SUCCEEDED
+
+
+server2:{598821126=[0]}
+server1:{598821126=[0]}
+server0:{598821126=[0]}
+ succeeded
+.test32_GracefulExecutionMultipleRequestsSingleServer [server0] handleMessageFromClient called with: insert into grade (id, events) values (105523946, []);
+[server0] handleMessageFromClient called with: insert into grade (id, events) values (105523946, []);
+[server0] Proposing to Raft: -1|insert into grade (id, events) values (105523946, []);|server0|server0-23977243005916--1
+[grpc-default-executor-2] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server2@group-1CF71D6BC4DD, cid=1, seq=1*, Watch(0), null
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.NotLeaderException: Server server2@group-1CF71D6BC4DD is not the leader, suggested leader is: server0|127.0.0.1:13000
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.completeReplyExceptionally(GrpcClientProtocolClient.java:383)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.access$000(GrpcClientProtocolClient.java:289)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:303)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:294)
+	at org.apache.ratis.thirdparty.io.grpc.stub.ClientCalls$StreamObserverToCallListenerAdapter.onMessage(ClientCalls.java:568)
+	at org.apache.ratis.thirdparty.io.grpc.ForwardingClientCallListener.onMessage(ForwardingClientCallListener.java:33)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1MessagesAvailable.runInternal(ClientCallImpl.java:661)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ClientCallImpl$ClientStreamListenerImpl$1MessagesAvailable.runInContext(ClientCallImpl.java:648)
+	at org.apache.ratis.thirdparty.io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at org.apache.ratis.thirdparty.io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.ratis.protocol.exceptions.NotLeaderException: Server server2@group-1CF71D6BC4DD is not the leader, suggested leader is: server0|127.0.0.1:13000
+	at org.apache.ratis.client.impl.ClientProtoUtils.toRaftClientReply(ClientProtoUtils.java:402)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers$1.onNext(GrpcClientProtocolClient.java:299)
+	... 10 more
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.FollowerState - server1@group-1CF71D6BC4DD-FollowerState: change to CANDIDATE, lastRpcElapsedTime:362833041ns, electionTimeout:299ms
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server1: shutdown server1@group-1CF71D6BC4DD-FollowerState
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from  FOLLOWER to CANDIDATE at term 2 for changeToCandidate
+[server1@group-1CF71D6BC4DD-FollowerState] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-LeaderElection2
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: change Leader from server0 to null at term 2 for PRE_VOTE
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection2 PRE_VOTE round 0: submit vote requests at term 2 for conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server0] handleMessageFromClient called with: update grade SET events=events+[1] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[1] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[1] where id=105523946;|server0|server0-23978621204666--1
+[server0] handleMessageFromClient called with: update grade SET events=events+[2] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[2] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[2] where id=105523946;|server0|server0-23978625808333--1
+[server0] handleMessageFromClient called with: update grade SET events=events+[3] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[3] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[3] where id=105523946;|server0|server0-23978628942458--1
+[server0] handleMessageFromClient called with: update grade SET events=events+[4] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[4] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[4] where id=105523946;|server0|server0-23978633520041--1
+[server0] handleMessageFromClient called with: update grade SET events=events+[5] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[5] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[5] where id=105523946;|server0|server0-23978635365083--1
+[server0] handleMessageFromClient called with: update grade SET events=events+[6] where id=105523946;
+[server0] handleMessageFromClient called with: update grade SET events=events+[6] where id=105523946;
+[server0] Proposing to Raft: -1|update grade SET events=events+[6] where id=105523946;|server0|server0-23978636626458--1
+[grpc-default-executor-7] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server1, group-1CF71D6BC4DD, 2, (t:2, i:6))
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD: receive requestVote(PRE_VOTE, server1, group-1CF71D6BC4DD, 2, (t:2, i:6))
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.VoteContext - server2@group-1CF71D6BC4DD-FOLLOWER: reject PRE_VOTE from server1: this server is a follower and still has a valid leader server0 different than the candidate server1
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server2@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server1<-server2#0:FAIL-t2-last:(t:2, i:6). Peer's state: server2@group-1CF71D6BC4DD:t2, leader=server0, voted=server0, raftlog=Memoized:server2@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c6:last(t:2, i:6), conf=conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[grpc-default-executor-7] INFO org.apache.ratis.server.impl.VoteContext - server0@group-1CF71D6BC4DD-LEADER: reject PRE_VOTE from server1: this server is the leader and still has leadership
+[grpc-default-executor-7] INFO org.apache.ratis.server.RaftServer$Division - server0@group-1CF71D6BC4DD replies to PRE_VOTE vote request: server1<-server0#0:FAIL-t2-last:(t:2, i:6). Peer's state: server0@group-1CF71D6BC4DD:t2, leader=server0, voted=server0, raftlog=Memoized:server0@group-1CF71D6BC4DD-SegmentedRaftLog:OPENED:c6:last(t:2, i:6), conf=conf: {index: 3, cur=peers:[server2|127.0.0.1:13002, server1|127.0.0.1:13001, server0|127.0.0.1:13000]|listeners:[], old=null}
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - rejectedPeers: [server2, server0], emptyCommit? false
+
+
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: changes role from CANDIDATE to FOLLOWER at term 2 for APPEND_ENTRIES
+server2:{}
+server1:{}
+server0:{}
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.RoleInfo - server1: shutdown server1@group-1CF71D6BC4DD-LeaderElection2
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection2: PRE_VOTE REJECTED received 2 response(s) and 0 exception(s):
+[grpc-default-executor-0] INFO org.apache.ratis.server.impl.RoleInfo - server1: start server1@group-1CF71D6BC4DD-FollowerState
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection -   Response 0: server1<-server2#0:FAIL-t2-last:(t:2, i:6)
+[grpc-default-executor-0] INFO org.apache.ratis.server.RaftServer$Division - server1@group-1CF71D6BC4DD: change Leader from null to server0 at term 2 for APPEND_ENTRIES, leader elected after 1493ms
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection -   Response 1: server1<-server0#0:FAIL-t2-last:(t:2, i:6)
+[server1@group-1CF71D6BC4DD-LeaderElection2] INFO org.apache.ratis.server.impl.LeaderElection - server1@group-1CF71D6BC4DD-LeaderElection2 PRE_VOTE round 0: result REJECTED
+ FAILED!!!!!!!!!!!!! java.lang.AssertionError: nonEmpty=false
+java.lang.AssertionError: nonEmpty=false
+[timer1] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=1, request=AppendEntriesRequest:cid=39,entriesCount=0	at org.junit.Assert.fail(Assert.java:88)
+
+
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at GraderCommonSetup.verifyOrderConsistent(GraderCommonSetup.java:312)
+	at GraderCommonSetup.verifyOrderConsistent(GraderCommonSetup.java:229)
+	at GraderCommonSetup.verifyOrderConsistent(GraderCommonSetup.java:223)
+[server0] RAFT PROPOSAL SUCCEEDED
+	at GraderFaultTolerance.test32_GracefulExecutionMultipleRequestsSingleServer(GraderFaultTolerance.java:199)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
+[timer0] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=8, request=AppendEntriesRequest:cid=47,entriesCount=0
+[timer1] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=1, request=AppendEntriesRequest:cid=42,entriesCount=0
+[timer7] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=7, request=AppendEntriesRequest:cid=46,entriesCount=0
+[timer1] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=5, seq=5, RW, Message:2d317c75706461746520...(size=91)
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #5 timeout 3s
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:362)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.handleReplyFuture(GrpcClientProtocolClient.java:367)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.timeoutCheck(GrpcClientProtocolClient.java:362)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$onNext$3(GrpcClientProtocolClient.java:355)
+	at org.apache.ratis.util.TimeoutTimer.lambda$onTimeout$2(TimeoutTimer.java:101)
+	at org.apache.ratis.util.LogUtils.runAndLog(LogUtils.java:38)
+	at org.apache.ratis.util.LogUtils$1.run(LogUtils.java:78)
+	at org.apache.ratis.util.TimeoutTimer$Task.run(TimeoutTimer.java:55)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+Caused by: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #5 timeout 3s
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:363)
+	... 10 more
+[timer0] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=4, seq=4, RW, Message:2d317c75706461746520...(size=91)
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #4 timeout 3s
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:362)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.handleReplyFuture(GrpcClientProtocolClient.java:367)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.timeoutCheck(GrpcClientProtocolClient.java:362)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$onNext$3(GrpcClientProtocolClient.java:355)
+	at org.apache.ratis.util.TimeoutTimer.lambda$onTimeout$2(TimeoutTimer.java:101)
+	at org.apache.ratis.util.LogUtils.runAndLog(LogUtils.java:38)
+	at org.apache.ratis.util.LogUtils$1.run(LogUtils.java:78)
+	at org.apache.ratis.util.TimeoutTimer$Task.run(TimeoutTimer.java:55)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+Caused by: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #4 timeout 3s
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:363)
+	... 10 more
+[timer5] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=6, request=AppendEntriesRequest:cid=45,entriesCount=0
+[timer4] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=5, request=AppendEntriesRequest:cid=44,entriesCount=0
+[timer2] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=4, request=AppendEntriesRequest:cid=43,entriesCount=0
+[timer2] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=3, request=AppendEntriesRequest:cid=48,entriesCount=0
+[timer6] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=3, request=AppendEntriesRequest:cid=41,entriesCount=0
+[timer6] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=4, request=AppendEntriesRequest:cid=56,entriesCount=0
+[timer6] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=5, request=AppendEntriesRequest:cid=57,entriesCount=0
+[timer3] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=2, request=AppendEntriesRequest:cid=40,entriesCount=0
+[timer2] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=6, seq=6, RW, Message:2d317c75706461746520...(size=91)
+[timer3] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=7, seq=7, RW, Message:2d317c75706461746520...(size=91)
+[timer0] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=8, seq=8, RW, Message:2d317c75706461746520...(size=91)
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #7 timeout 3s
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:362)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.handleReplyFuture(GrpcClientProtocolClient.java:367)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.timeoutCheck(GrpcClientProtocolClient.java:362)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$onNext$3(GrpcClientProtocolClient.java:355)
+	at org.apache.ratis.util.TimeoutTimer.lambda$onTimeout$2(TimeoutTimer.java:101)
+	at org.apache.ratis.util.LogUtils.runAndLog(LogUtils.java:38)
+	at org.apache.ratis.util.LogUtils$1.run(LogUtils.java:78)
+	at org.apache.ratis.util.TimeoutTimer$Task.run(TimeoutTimer.java:55)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+Caused by: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #7 timeout 3s
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:363)
+	... 10 more
+[timer5] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=1, request=AppendEntriesRequest:cid=51,entriesCount=0
+[timer5] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=6, request=AppendEntriesRequest:cid=52,entriesCount=0
+[timer4] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=2, request=AppendEntriesRequest:cid=49,entriesCount=0
+[timer5] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=7, request=AppendEntriesRequest:cid=53,entriesCount=0
+[timer7] ERROR org.apache.ratis.client.impl.OrderedAsync -  client-0681C6917DA4: Failed* RaftClientRequest:client-0681C6917DA4->server0@group-1CF71D6BC4DD, cid=3, seq=3, RW, Message:2d317c75706461746520...(size=91)
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #3 timeout 3s
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:362)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.handleReplyFuture(GrpcClientProtocolClient.java:367)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.timeoutCheck(GrpcClientProtocolClient.java:362)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$onNext$3(GrpcClientProtocolClient.java:355)
+	at org.apache.ratis.util.TimeoutTimer.lambda$onTimeout$2(TimeoutTimer.java:101)
+	at org.apache.ratis.util.LogUtils.runAndLog(LogUtils.java:38)
+	at org.apache.ratis.util.LogUtils$1.run(LogUtils.java:78)
+	at org.apache.ratis.util.TimeoutTimer$Task.run(TimeoutTimer.java:55)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+Caused by: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #3 timeout 3s
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:363)
+	... 10 more
+[timer4] WARN org.apache.ratis.grpc.server.GrpcLogAppender - server0@group-1CF71D6BC4DD->server1-GrpcLogAppender: Timed out HEARTBEAT appendEntries, errorCount=8, request=AppendEntriesRequest:cid=50,entriesCount=0
+java.util.concurrent.CompletionException: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #6 timeout 3s
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2094)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:362)
+	at java.base/java.util.Optional.ifPresent(Optional.java:183)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.handleReplyFuture(GrpcClientProtocolClient.java:367)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.timeoutCheck(GrpcClientProtocolClient.java:362)
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$onNext$3(GrpcClientProtocolClient.java:355)
+	at org.apache.ratis.util.TimeoutTimer.lambda$onTimeout$2(TimeoutTimer.java:101)
+	at org.apache.ratis.util.LogUtils.runAndLog(LogUtils.java:38)
+	at org.apache.ratis.util.LogUtils$1.run(LogUtils.java:78)
+	at org.apache.ratis.util.TimeoutTimer$Task.run(TimeoutTimer.java:55)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+Caused by: org.apache.ratis.protocol.exceptions.TimeoutIOException: client-0681C6917DA4->server0 request #6 timeout 3s
+	at org.apache.ratis.grpc.client.GrpcClientProtocolClient$AsyncStreamObservers.lambda$timeoutCheck$5(GrpcClientProtocolClient.java:363)
+	... 10 more

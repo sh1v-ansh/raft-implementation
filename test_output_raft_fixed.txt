@@ -1,0 +1,222 @@
+JUnit version 4.12
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+Recovering server2
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server2
+Recovering server1
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server1
+Recovering server0
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server0
+Started all servers; serverProcesses={server2=Process[pid=41610, exitValue="not exited"], server1=Process[pid=41611, exitValue="not exited"], server0=Process[pid=41612, exitValue="not exited"]}
+
+Waiting (18 seconds) for ZK-or-other-approach servers to start
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+.test31_GracefulExecutionSingleRequest 
+
+
+
+server2:{2042658342=[0]}
+server1:{2042658342=[0]}
+server0:{2042658342=[0]}
+ succeeded
+.test32_GracefulExecutionMultipleRequestsSingleServer 
+
+
+
+server2:{-2145711462=[1]}
+server1:{-2145711462=[1]}
+server0:{-2145711462=[1]}
+ succeeded
+.test33_GracefulExecutionMultipleRequestsToMultipleServers 
+
+
+server2:{305318458=[8, 7]}
+server1:{305318458=[8, 7]}
+server0:{305318458=[8, 7]}
+ succeeded
+.test34_SingleServerCrash Sending command to server2; crashed=[server1]
+
+
+Excluded servers=[server1]
+
+
+server2:{813524294=[13]}
+server0:{813524294=[13]}
+ succeeded
+.test35_TwoServerCrash Sending request to server0; crashed=[server2, server1]
+Excluded servers=[server2, server1]
+
+
+server0:{}
+ succeeded
+.test36_OneServerRecoveryMultipleRequests Recovering server2
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server2
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+
+
+
+Excluded servers=[server1]
+
+
+server2:{1596918989=[30]}
+server0:{1596918989=[30]}
+ succeeded
+.test37_TwoServerRecoveryMultipleRequests Recovering server1
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server1
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+
+
+
+
+server2:{967508605=[40]}
+server1:{967508605=[40]}
+server0:{967508605=[40]}
+ succeeded
+.test38_EntireStateMatchCheck 
+
+server2:{1596918989=[30], 967508605=[40], 2080678988=[19]}
+server1:{1596918989=[30], 967508605=[40], 2080678988=[19], 813524294=[13]}
+server0:{-2145711462=[1], 1596918989=[30], 967508605=[40], 2042658342=[0], 305318458=[8, 7], 2080678988=[19], -453651634=[0], 813524294=[13]}
+ succeeded
+.test39_InstantaneousMassacreAndRevivalTest Recovering server2
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server2
+Recovering server1
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server1
+Recovering server0
+Executing start server command:  /opt/homebrew/Cellar/openjdk@11/11.0.28/libexec/openjdk.jdk/Contents/Home/bin/java -cp lib/apache-cassandra-3.11.0.jar:lib/ratis-grpc-3.2.1.jar:lib/ratis-server-3.2.1-tests.jar:lib/slf4j-simple-1.7.25.jar:lib/grader.jar:lib/c3p0-0.9.5.jar:lib/zookeeper-3.9.1.jar:lib/ratis-client-3.2.1.jar:lib/json-smart-1.2.jar:lib/netty-all-4.1.4.Final.jar:lib/junit-4.12.jar:lib/ratis-grpc-3.2.1-tests.jar:lib/ratis-client-3.2.1-tests.jar:lib/guava-18.0.jar:lib/mchange-commons-java-0.2.9.jar:lib/ratis-common-3.2.1.jar:lib/zookeeper-jute-3.9.1.jar:lib/slf4j-api-1.7.7.jar:lib/ratis-metrics-default-3.2.1.jar:lib/gigapaxos-nio-src.jar:lib/ratis-proto-3.2.1.jar:lib/slf4j-api-2.0.7.jar:lib/hamcrest-all-1.3.jar:lib/jakarta.annotation-api-1.3.5.jar:lib/ratis-metrics-api-3.2.1.jar:lib/metrics-logback-3.1.0.jar:lib/metrics-jvm-3.1.0.jar:lib/ratis-server-3.2.1.jar:lib/cassandra-driver-core-3.0.1-shaded.jar:lib/ratis-server-api-3.2.1.jar:lib/ratis-thirdparty-misc-1.0.10.jar:lib/derby.jar:lib/gigapaxos-1.0.10.jar:lib/metrics-core-3.1.0.jar:bin -DgigapaxosConfig=conf/gigapaxos.properties -Djava.util.logging.config.file=logging.properties server.faulttolerance.MyDBFaultTolerantServerZK /Users/shivanshsoni/Projects/raft/conf/servers.properties server0
+Started all servers; serverProcesses={server2=Process[pid=42135, exitValue="not exited"], server1=Process[pid=42136, exitValue="not exited"], server0=Process[pid=42137, exitValue="not exited"]}
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/Users/shivanshsoni/Projects/raft/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO com.datastax.shaded.netty.util.internal.PlatformDependent - Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[main] INFO com.datastax.driver.core.NettyUtil - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+[main] WARN com.datastax.driver.core.Cluster - You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+[main] INFO com.datastax.driver.core.policies.DCAwareRoundRobinPolicy - Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+[main] INFO com.datastax.driver.core.Cluster - New Cassandra host localhost/127.0.0.1:9042 added
+
+
+server2:{}
+server1:{}
+server0:{}
+ FAILED!!!!!!!!!!!!! java.lang.AssertionError: nonEmpty=false
+java.lang.AssertionError: nonEmpty=false
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at GraderCommonSetup.verifyOrderConsistent(GraderCommonSetup.java:312)
+	at GraderCommonSetup.verifyOrderConsistent(GraderCommonSetup.java:229)
+	at GraderFaultTolerance.verifyTableConsistent(GraderFaultTolerance.java:576)
+	at GraderFaultTolerance.verifyTableConsistent(GraderFaultTolerance.java:572)
+	at GraderFaultTolerance.test38_EntireStateMatchCheck(GraderFaultTolerance.java:412)
+	at GraderFaultTolerance.test39_InstantaneousMassacreAndRevivalTest(GraderFaultTolerance.java:432)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:77)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:36)
