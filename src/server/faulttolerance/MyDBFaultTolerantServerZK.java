@@ -50,19 +50,18 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
     public static final boolean DROP_TABLES_AFTER_TESTS = true;
     public static final int MAX_LOG_SIZE = 400;
 
-    // Raft timing constants
-    private static final int HEARTBEAT_INTERVAL = 50; // milliseconds
-    private static final int MIN_ELECTION_TIMEOUT = 150; // milliseconds
-    private static final int MAX_ELECTION_TIMEOUT = 300; // milliseconds
-    private static final int RPC_TIMEOUT = 100; // milliseconds
+    // Raft timing variables
+    private static final int HEARTBEAT_INTERVAL = 50; 
+    private static final int MIN_ELECTION_TIMEOUT = 150;
+    private static final int MAX_ELECTION_TIMEOUT = 300;
+    private static final int RPC_TIMEOUT = 100;
     
-    // Raft port offset from client port
     private static final int RAFT_PORT_OFFSET = 100;
 
-    // Persistent state (must survive crashes)
+    // Persistent state
     private volatile int currentTerm = 0;
     private volatile String votedFor = null;
-    private final List<LogEntry> raftLog = new ArrayList<>(); // synchronized access required
+    private final List<LogEntry> raftLog = new ArrayList<>(); 
     
     // Snapshot state
     private volatile long lastIncludedIndex = 0;
@@ -79,7 +78,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
     protected final Session session;
     protected final Cluster cluster;
     
-    // Leader-specific state (reinitialized after election)
+    // Leader-specific state
     private final Map<String, Long> nextIndex = new ConcurrentHashMap<>();
     private final Map<String, Long> matchIndex = new ConcurrentHashMap<>();
 
@@ -162,18 +161,15 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
         this.myID = myID;
         this.allServers = nodeConfig.getNodeIDs();
         
-        // Initialize Cassandra connection
         this.cluster = Cluster.builder().addContactPoint(isaDB.getHostString()).withPort(isaDB.getPort()).build();
         this.session = cluster.connect(myID);
         
-        // Setup storage directories
         this.storageDir = Paths.get("raft_storage", myID);
         Files.createDirectories(storageDir);
         this.logFile = storageDir.resolve("log.dat");
         this.metadataFile = storageDir.resolve("metadata.dat");
         this.snapshotFile = storageDir.resolve("snapshot.dat");
         
-        // Build server address map for Raft RPCs
         this.serverAddresses = new ConcurrentHashMap<>();
         for (String serverId : allServers) {
             if (!serverId.equals(myID)) {
@@ -185,15 +181,12 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             }
         }
         
-        // Start Raft RPC server
         int raftPort = nodeConfig.getNodePort(myID) + RAFT_PORT_OFFSET;
         this.raftServerSocket = new ServerSocket(raftPort);
         this.raftThreadPool = Executors.newCachedThreadPool();
         
-        // Recover from crash
         recoverFromCrash();
         
-        // Start Raft protocol threads
         startRaftServer();
         resetElectionTimer();
         
@@ -206,7 +199,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
      * Critical: Must recover lastApplied from Cassandra to avoid re-execution
      */
     private void recoverFromCrash() throws IOException {
-        // Load metadata (currentTerm, votedFor)
         if (Files.exists(metadataFile)) {
             try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(metadataFile))) {
                 currentTerm = ois.readInt();
@@ -220,7 +212,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             }
         }
         
-        // Load snapshot if exists
         if (Files.exists(snapshotFile)) {
             try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(snapshotFile))) {
                 lastIncludedIndex = ois.readLong();
@@ -244,7 +235,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             commitIndex = lastIncludedIndex;
         }
         
-        // Load log entries
         if (Files.exists(logFile)) {
             try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(logFile))) {
                 @SuppressWarnings("unchecked")
@@ -259,7 +249,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             }
         }
         
-        // Replay any committed but not applied entries
         applyCommittedEntries();
     }
     
@@ -269,12 +258,10 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
      */
     private long recoverLastAppliedFromDB() {
         try {
-            // Create metadata table if it doesn't exist
             session.execute(
                 "CREATE TABLE IF NOT EXISTS raft_metadata (key text PRIMARY KEY, value bigint)"
             );
             
-            // Try to read lastApplied
             ResultSet rs = session.execute(
                 "SELECT value FROM raft_metadata WHERE key = 'lastApplied'"
             );
@@ -294,7 +281,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
      */
     private void persistLastApplied(long index) {
         try {
-            // Update lastApplied in metadata table
             session.execute(
                 "INSERT INTO raft_metadata (key, value) VALUES ('lastApplied', ?)",
                 index
@@ -340,7 +326,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
         
         synchronized (raftLog) {
             if (snapshotIndex <= lastIncludedIndex) {
-                return; // Already snapshotted
+                return;
             }
             
             int logIndex = (int) (snapshotIndex - lastIncludedIndex - 1);
@@ -350,7 +336,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             
             snapshotTerm = raftLog.get(logIndex).term;
             
-            // Write snapshot metadata
             try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(snapshotFile))) {
                 oos.writeLong(snapshotIndex);
                 oos.writeInt(snapshotTerm);
@@ -359,8 +344,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 log.log(Level.SEVERE, "Failed to write snapshot", e);
                 return;
             }
-            
-            // Discard log entries up to snapshotIndex
+
             List<LogEntry> newLog = new ArrayList<>(raftLog.subList(logIndex + 1, raftLog.size()));
             raftLog.clear();
             raftLog.addAll(newLog);
@@ -417,12 +401,10 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             
             oos.flush();
         } catch (Exception e) {
-            // Normal for timeouts
         } finally {
             try {
                 socket.close();
             } catch (IOException e) {
-                // Ignore
             }
         }
     }
@@ -446,7 +428,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             if (term < currentTerm) {
                 voteGranted = false;
             } else {
-                // Check if we can vote for this candidate
                 boolean canVote = (votedFor == null || votedFor.equals(candidateId));
                 boolean logUpToDate = isLogUpToDate(lastLogIndex, lastLogTerm);
                 
@@ -486,16 +467,14 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             if (term < currentTerm) {
                 success = false;
             } else {
-                // Valid leader
                 if (state != ServerState.FOLLOWER) {
                     convertToFollower(term);
                 }
                 currentLeader = leaderId;
                 resetElectionTimer();
                 
-                // Check log consistency
                 if (prevLogIndex < lastIncludedIndex) {
-                    success = false; // Need snapshot
+                    success = false;
                 } else if (prevLogIndex == lastIncludedIndex) {
                     success = (prevLogTerm == lastIncludedTerm);
                 } else {
@@ -509,27 +488,21 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 }
                 
                 if (success && entries != null && !entries.isEmpty()) {
-                    // Append new entries - follow Raft protocol correctly
                     synchronized (raftLog) {
                         long insertIndex = prevLogIndex + 1;
                         int logInsertPos = (int) (insertIndex - lastIncludedIndex - 1);
                         
-                        // Only truncate if there's an actual conflict (different term at same index)
+                        // Only truncate if there's an actual conflict
                         // Don't truncate on empty heartbeats!
                         for (int i = 0; i < entries.size(); i++) {
                             int currentPos = logInsertPos + i;
                             if (currentPos < raftLog.size()) {
-                                // Check for conflict
                                 if (raftLog.get(currentPos).term != entries.get(i).term) {
-                                    // Conflict found - delete this and all following entries
                                     raftLog.subList(currentPos, raftLog.size()).clear();
-                                    // Append remaining new entries
                                     raftLog.addAll(entries.subList(i, entries.size()));
                                     break;
                                 }
-                                // else: same term, entry already exists, continue
                             } else {
-                                // Append remaining new entries
                                 raftLog.addAll(entries.subList(i, entries.size()));
                                 break;
                             }
@@ -639,7 +612,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                     nextIndex.put(serverId, newMatchIndex + 1);
                 }
             } else {
-                // Decrement nextIndex and retry
                 nextIndex.put(serverId, Math.max(1, nextIdx - 1));
             }
             
@@ -655,7 +627,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
     private void startElection() {
         synchronized (this) {
             if (state == ServerState.LEADER) {
-                return; // Already leader
+                return;
             }
             
             state = ServerState.CANDIDATE;
@@ -667,7 +639,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             log.log(Level.INFO, "Starting election for term {0}", currentTerm);
         }
         
-        AtomicInteger votesReceived = new AtomicInteger(1); // Vote for self
+        AtomicInteger votesReceived = new AtomicInteger(1);
         int majority = (allServers.size() / 2) + 1;
         
         for (String serverId : allServers) {
@@ -695,7 +667,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
         state = ServerState.LEADER;
         currentLeader = myID;
         
-        // Initialize leader state
         long lastLogIdx = getLastLogIndex();
         for (String serverId : allServers) {
             if (!serverId.equals(myID)) {
@@ -704,7 +675,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             }
         }
         
-        // Start sending heartbeats
         startHeartbeats();
         
         log.log(Level.INFO, "Became LEADER in term {0}", currentTerm);
@@ -784,7 +754,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 
                 List<LogEntry> entries = null;
                 if (nextIdx <= lastLogIdx) {
-                    // Need to send log entries
                     synchronized (raftLog) {
                         long startIdx = nextIdx - lastIncludedIndex - 1;
                         if (startIdx >= 0 && startIdx < raftLog.size()) {
@@ -797,7 +766,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             });
         }
         
-        // Update commit index
         updateCommitIndex();
     }
 
@@ -817,7 +785,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 continue;
             }
             
-            int replicaCount = 1; // Leader has it
+            int replicaCount = 1;
             for (String serverId : allServers) {
                 if (serverId.equals(myID)) continue;
                 if (matchIndex.getOrDefault(serverId, 0L) >= n) {
@@ -850,11 +818,9 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 LogEntry entry = raftLog.get((int) logIndex);
                 executeCommand(entry.command, entry.requestId);
                 
-                // Persist lastApplied to Cassandra for crash recovery
                 persistLastApplied(lastApplied);
             }
             
-            // Check if we need to snapshot
             if (raftLog.size() >= MAX_LOG_SIZE) {
                 takeSnapshot();
             }
@@ -873,11 +839,9 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 response += row.toString() + "\n";
             }
             
-            // Send response to client if this server received the request
             PendingRequest pending = pendingRequests.remove(requestId);
             if (pending != null) {
                 try {
-                    // Extract original request ID if present
                     String[] parts = requestId.split("-", 3);
                     if (parts.length >= 3) {
                         String originalReqId = parts[2];
@@ -908,7 +872,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
             String requestIdStr = "none";
             String query = request;
             
-            // Parse request ID if present (sent by client for idempotency)
             int colonIdx = request.indexOf(':');
             if (colonIdx > 0) {
                 String idPart = request.substring(0, colonIdx);
@@ -917,37 +880,28 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                     requestIdStr = idPart;
                     query = request.substring(colonIdx + 1);
                 } catch (NumberFormatException e) {
-                    // No valid ID
                 }
             }
             
-            // Wait a bit for leader election if needed
             for (int i = 0; i < 20 && state == ServerState.CANDIDATE; i++) {
                 Thread.sleep(100);
             }
             
-            // Only leader can process client requests
             if (state != ServerState.LEADER) {
                 log.log(Level.FINE, "Not leader (state={0}), ignoring client request", state);
-                // In production, we would redirect to leader
-                // For testing, client should send to different servers until it finds leader
                 return;
             }
             
-            // Use client-provided request ID for idempotency
             // Format: serverID-clientAddr-requestID
             String uniqueRequestId = myID + "-" + header.sndr.toString().replace("/", "").replace(":", "_") + "-" + requestIdStr;
             
-            // Check for duplicate request (idempotency)
             if (pendingRequests.containsKey(uniqueRequestId)) {
                 log.log(Level.FINE, "Duplicate request detected: {0}", uniqueRequestId);
-                return; // Already processing this request
+                return;
             }
             
-            // Store pending request
             pendingRequests.put(uniqueRequestId, new PendingRequest(header.sndr));
             
-            // Append to log as leader
             synchronized (raftLog) {
                 LogEntry entry = new LogEntry(currentTerm, query, uniqueRequestId);
                 raftLog.add(entry);
@@ -955,8 +909,7 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
                 
                 log.log(Level.FINE, "Leader appended entry to log: index={0}", getLastLogIndex());
             }
-            
-            // Immediately replicate to followers
+
             sendHeartbeats();
             
         } catch (Exception e) {
@@ -1034,7 +987,6 @@ public class MyDBFaultTolerantServerZK extends server.MyDBSingleServer {
         try {
             raftServerSocket.close();
         } catch (IOException e) {
-            // Ignore
         }
         
         if (session != null) {
